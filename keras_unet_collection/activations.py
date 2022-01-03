@@ -16,6 +16,10 @@ def snake_(X, beta):
 def q_relu(X):
   return tf.where(X > 0, X, 0.01*X-2*X)
 
+def m_q_relu(X):
+  return tf.where(X > 0, X, 0.01*X-X)
+
+
 
 # Vectorising the QReLU function
 np_q_relu = np.vectorize(q_relu)
@@ -155,6 +159,29 @@ class QReLU(Layer):
     def get_config(self):
         config = {'trainable': self.trainable}
         base_config = super(QReLU, self).get_config()
+        return dict(list(base_config.items()))
+
+    def compute_output_shape(self, input_shape):
+        return input_shape
+
+class MQReLU(Layer):
+
+    def __init__(self,trainable=False,**kwargs):
+        super(MQReLU,self).__init__(**kwargs)
+        self.supports_masking = True
+        self.trainable = trainable
+    def build(self, input_shape):
+        super(MQReLU,self).build(input_shape)
+
+
+    def call(self, inputs,name=None):
+        return q_relu(inputs)
+        #return tf_q_relu(inputs,name=None)
+
+
+    def get_config(self):
+        config = {'trainable': self.trainable}
+        base_config = super(MQReLU, self).get_config()
         return dict(list(base_config.items()))
 
     def compute_output_shape(self, input_shape):

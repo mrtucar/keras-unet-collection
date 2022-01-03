@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 
 from keras_unet_collection.layer_utils import *
-from keras_unet_collection.activations import GELU, Snake
+from keras_unet_collection.activations import *
 
 from tensorflow.keras.layers import Input
 from tensorflow.keras.models import Model

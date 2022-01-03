@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 
 from keras_unet_collection.layer_utils import *
-from keras_unet_collection.activations import GELU, Snake
+from keras_unet_collection.activations import *
 from keras_unet_collection._model_unet_2d import UNET_left, UNET_right
 from keras_unet_collection.transformer_layers import patch_extract, patch_embedding
 from keras_unet_collection._backbone_zoo import backbone_zoo, bach_norm_checker
