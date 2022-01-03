@@ -152,7 +152,9 @@ class QReLU(Layer):
 
 
     def call(self, inputs,name=None):
-        return tf_q_relu(inputs,name=None)
+        return q_relu(inputs)
+        #return tf_q_relu(inputs,name=None)
+
 
     def get_config(self):
         config = {'trainable': self.trainable}
