@@ -14,12 +14,8 @@ def snake_(X, beta):
     return X + (1/beta)*math.square(math.sin(beta*X))
 
 def q_relu(X):
-  if X>0:
-    X = X
-    return X
-  else:
-    X = 0.01*X-2*X
-    return X
+  return tf.where(X > 0, X, 0.01*X-2*X)
+
 
 # Vectorising the QReLU function
 np_q_relu = np.vectorize(q_relu)
