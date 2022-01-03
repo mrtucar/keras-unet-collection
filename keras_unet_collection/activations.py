@@ -143,7 +143,7 @@ class Snake(Layer):
 
 class QReLU(Layer):
 
-    def __init__(self,**kwargs):
+    def __init__(self,beta=0.5, trainable=False,**kwargs):
         super(QReLU,self).__init__(**kwargs)
         self.supports_masking = True
         self.beta = beta
