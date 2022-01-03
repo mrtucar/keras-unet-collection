@@ -142,8 +142,8 @@ class Snake(Layer):
 
 class QReLU(Layer):
 
-    def __init__(self):
-        super(QReLU,self).__init__()
+    def __init__(self,**kwargs):
+        super(QReLU,self).__init__(**kwargs)
 
     def build(self, input_shape):
         super().build(input_shape)
