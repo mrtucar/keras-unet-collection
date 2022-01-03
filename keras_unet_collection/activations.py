@@ -2,6 +2,7 @@
 from tensorflow import math
 from tensorflow.keras.layers import Layer
 import tensorflow.keras.backend as K
+import tensorflow as tf
 import numpy as np
 
 def gelu_(X):
