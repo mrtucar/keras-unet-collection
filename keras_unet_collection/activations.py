@@ -145,9 +145,15 @@ class QReLU(Layer):
 
     def __init__(self,**kwargs):
         super(QReLU,self).__init__(**kwargs)
-
+        self.supports_masking = True
+        self.beta = beta
+        self.trainable = trainable
     def build(self, input_shape):
-        super().build(input_shape)
+        self.beta_factor = K.variable(self.beta, dtype=K.floatx(), name='beta_factor')
+        if self.trainable:
+            self._trainable_weights.append(self.beta_factor)
+        super(QReLU,self).build(input_shape)
+
 
     def call(self, inputs,name=None):
         return tf_q_relu(inputs,name=None)
